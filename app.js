@@ -105,6 +105,7 @@ function OnClickBtnSubmitResult()
 function onClickBtnRemove()
 {
     destroy();
+    initialize();
     $('#setteing').show();
     $('#result').hide();
     $('#game').hide();
@@ -218,7 +219,7 @@ function updateRoundResultTable()
         }
         html += '</select></td>';
 
-        html += '<td id="bounus_' + GlobalValue.player_list[i].id + '">bounus</td>';
+        html += '<td><input type="number" id="bonus_' + GlobalValue.player_list[i].id + '" name="bonus"></td>';
     }
     $('#round-result-table-body').html(html);
 }
@@ -226,28 +227,34 @@ function updateRoundResultTable()
 //
 function addScores()
 {
+    let elem_id;
+    let wins;
+    let predict;
+    let score;
+    let bonus;
+
     for (let i = 0; i < GlobalValue.player_list.length; i++)
     {
-        let elem_id = "#wins_" + GlobalValue.player_list[i].id;
-        let wins = $(elem_id).val();
-        let predict = GlobalValue.player_list[i].predict && GlobalValue.player_list[i].predict;
+        elem_id = "#wins_" + GlobalValue.player_list[i].id;
+        wins = $(elem_id).val();
+        predict = GlobalValue.player_list[i].predict && GlobalValue.player_list[i].predict;
+        score = 0;
 
-        let score = 0;
+        // ボーナススコア
+        elem_id = "#bonus_" + GlobalValue.player_list[i].id;
+        bonus = Number($(elem_id).val());
 
-        // 通常スコア
+        // スコア
         if (predict == wins)
         {
-            if (predict == 0)   score += GlobalValue.round * 10;
-            else                score += predict * 20;
+            if (predict == 0)   score += GlobalValue.round * 10 + bonus;
+            else                score += predict * 20 + bonus;
         }
         else
         {
             if (predict == 0)   score -= GlobalValue.round * 10;
             else                score -= Math.abs(predict - wins) * 10;
         }
-        
-        // TODO: ボーナススコア
-
         
         GlobalValue.player_list[i].scores.push(score);
     }
