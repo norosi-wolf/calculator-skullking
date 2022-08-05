@@ -51,7 +51,7 @@ function initialize()
             showGameResult();
         break;
         case SCENE_RESULT:
-            $('#setteing').show();
+            showResult();
         break;
     }
 }
@@ -84,21 +84,21 @@ function OnClickBtnSubmitPredict()
 //
 function OnClickBtnSubmitResult()
 {
+    addScores();
+
     if (GlobalValue.round == ROUND_LAST)
     {
-        // -> result
-        $('#game').hide();
-        $('#result').show();
-        return;
+        GlobalValue.now_scene = SCENE_RESULT;
+        showResult();
+    }
+    else
+    {
+        GlobalValue.now_scene = SCENE_GAME_PREDICT;
+        GlobalValue.round++;
+        showGamePredict();
     }
 
-    GlobalValue.round++;
-
-    addScores();
-    GlobalValue.now_scene = SCENE_GAME_PREDICT;
     save();
-
-    showGamePredict();
 }
 
 //
@@ -136,6 +136,36 @@ function showGameResult()
     $('#game').show();
     $('#round-predict').hide();
     $('#round-result').show();
+}
+
+
+//
+function showResult()
+{
+    let html = '';
+    for (let i = 0; i < GlobalValue.player_list.length; i++)
+    {
+        html += '<tr><td>' + GlobalValue.player_list[i].name + '</td>';
+
+        let total_score = 0;
+        for (let j = 0; j < GlobalValue.player_list[i].scores.length; j++)
+        {
+            html += '<td>' + GlobalValue.player_list[i].scores[j] + '</td>';
+            total_score += GlobalValue.player_list[i].scores[j];
+        }
+
+        let rem = ROUND_LAST - GlobalValue.player_list[i].scores.length;
+        for (let j = 0; j < rem; j++)
+        {
+            html += '<td></td>';
+        }
+
+        html += '<td>' + total_score + '</td>';
+    }
+    $('#result-table-body').html(html);
+
+    $('#game').hide();
+    $('#result').show();
 }
 
 // 
