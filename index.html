@@ -6,6 +6,13 @@
 <title>calculator-skullking</title>
 
 <style>
+    @font-face {
+        font-family: 'NotoSans-Medium';
+        src: url('./NotoSans-Medium.ttf') format('truetype');
+    }
+    * {
+        font-family: 'NotoSans-Medium', Arial, sans-serif;
+    }
     th {
         padding:10px;
     }
@@ -14,6 +21,10 @@
         text-align: center;
     }
 </style>
+
+<link rel="stylesheet" href="./jquery-ui-1.13.2.custom/jquery-ui.min.css">
+<link rel="stylesheet" href="./jquery-ui-1.13.2.custom/jquery-ui.structure.min.css">
+<link rel="stylesheet" href="./jquery-ui-1.13.2.custom/jquery-ui.theme.min.css">
 
 </head>
 
@@ -27,17 +38,18 @@
 <div id="setteing" style="display: none;">
     <h2>Regist Players</h2>
     <div id="regist-players">
-        <p style="display:inline; width:20%; margin-right:1%;">player_01:</p><input type="text" id="player_01" name="player_01" maxlength="8" style="width:70%;"><br />
-        <p style="display:inline; width:20%; margin-right:1%;">player_02:</p><input type="text" id="player_02" name="player_02" maxlength="8" style="width:70%;"><br />
-        <p style="display:inline; width:20%; margin-right:1%;">player_03:</p><input type="text" id="player_03" name="player_03" maxlength="8" style="width:70%;"><br />
-        <p style="display:inline; width:20%; margin-right:1%;">player_04:</p><input type="text" id="player_04" name="player_04" maxlength="8" style="width:70%;"><br />
-        <p style="display:inline; width:20%; margin-right:1%;">player_05:</p><input type="text" id="player_05" name="player_05" maxlength="8" style="width:70%;"><br />
-        <p style="display:inline; width:20%; margin-right:1%;">player_06:</p><input type="text" id="player_06" name="player_06" maxlength="8" style="width:70%;"><br />
-        <p style="display:inline; width:20%; margin-right:1%;">player_07:</p><input type="text" id="player_07" name="player_07" maxlength="8" style="width:70%;"><br />
-        <p style="display:inline; width:20%; margin-right:1%;">player_08:</p><input type="text" id="player_08" name="player_08" maxlength="8" style="width:70%;"><br />
+        <p style="display:inline-block; width:70px; margin-right:15px; margin-bottom:5px;">player_01:</p><input type="text" id="player_01" name="player_01" maxlength="8" style="width:70%;"><br />
+        <p style="display:inline-block; width:70px; margin-right:15px; margin-bottom:5px;">player_02:</p><input type="text" id="player_02" name="player_02" maxlength="8" style="width:70%;"><br />
+        <p style="display:inline-block; width:70px; margin-right:15px; margin-bottom:5px;">player_03:</p><input type="text" id="player_03" name="player_03" maxlength="8" style="width:70%;"><br />
+        <p style="display:inline-block; width:70px; margin-right:15px; margin-bottom:5px;">player_04:</p><input type="text" id="player_04" name="player_04" maxlength="8" style="width:70%;"><br />
+        <p style="display:inline-block; width:70px; margin-right:15px; margin-bottom:5px;">player_05:</p><input type="text" id="player_05" name="player_05" maxlength="8" style="width:70%;"><br />
+        <p style="display:inline-block; width:70px; margin-right:15px; margin-bottom:5px;">player_06:</p><input type="text" id="player_06" name="player_06" maxlength="8" style="width:70%;"><br />
+        <p style="display:inline-block; width:70px; margin-right:15px; margin-bottom:5px;">player_07:</p><input type="text" id="player_07" name="player_07" maxlength="8" style="width:70%;"><br />
+        <p style="display:inline-block; width:70px; margin-right:15px; margin-bottom:5px;">player_08:</p><input type="text" id="player_08" name="player_08" maxlength="8" style="width:70%;"><br />
     </div>
     <hr />
     <button id="btn_regist_player" style="padding:2%;" onclick="onClickBtnRegistPlayer()">Regist Players</button>
+    <input type="button" value="Button1">
 </div>
 
 
@@ -104,8 +116,8 @@
     </table>
 </div>
 
-
 <script src="./jquery-3.6.0.slim.min.js"></script>
+<script src="./jquery-ui-1.13.2.custom/jquery-ui.min.js"></script>
 <script src="./app.js"></script>
 </body>
 
