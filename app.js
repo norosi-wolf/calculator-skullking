@@ -24,9 +24,29 @@ $(document).ready(function(){
     initialize();
 });
 
+//
+function initializeDialog()
+{
+    $("#dialog-confirm").dialog({
+        modal: true,
+        buttons: {
+            "OK": function() {
+                $(this).dialog("close");
+            },
+            "Cancel": function() {
+                $(this).dialog("close");
+            }
+        }
+    });
+    $("#dialog-confirm").dialog("close");
+}
+
 // 
 function initialize()
 {
+    initializeDialog();
+
+
     // 初期化
     GlobalValue.player_list = [];
     GlobalValue.round = 1;
